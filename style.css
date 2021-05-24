@@ -1,0 +1,165 @@
+:root {
+  /* Fuentes */
+  --principal-font: "Bai Jamjuree", sans-serif;
+
+  /* Colores */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--principal-font);
+  color: white;
+}
+
+@keyframes movie {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  10% {
+    -webkit-transform: translate(-5%, -5%);
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    -webkit-transform: translate(-10%, 5%);
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    -webkit-transform: translate(5%, -10%);
+    transform: translate(5%, -10%);
+  }
+  40% {
+    -webkit-transform: translate(-5%, 15%);
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    -webkit-transform: translate(-10%, 5%);
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    -webkit-transform: translate(15%, 0);
+    transform: translate(15%, 0);
+  }
+  70% {
+    -webkit-transform: translate(0, 10%);
+    transform: translate(0, 10%);
+  }
+  80% {
+    -webkit-transform: translate(-15%, 0);
+    transform: translate(-15%, 0);
+  }
+  90% {
+    -webkit-transform: translate(10%, 5%);
+    transform: translate(10%, 5%);
+  }
+  100% {
+    -webkit-transform: translate(5%, 0);
+    transform: translate(5%, 0);
+  }
+}
+
+header {
+  padding: 65px;
+  padding-left: 65px;
+  padding-top: 65px;
+}
+
+header ul li {
+  font-weight: bold;
+}
+
+body {
+  background-color: black;
+}
+
+.bg {
+  position: fixed;
+  background-image: url(./movie.png);
+  opacity: 0.6;
+  z-index: -1;
+  pointer-events: none;
+  height: 200%;
+  width: 200%;
+  left: -50%;
+  top: -50%;
+  animation: movie 1s steps(4) infinite;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+ul {
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  cursor: pointer;
+  width: 100px;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+li::before {
+  position: absolute;
+  content: attr(data-content);
+  background: -webkit-linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0) 40%,
+    rgb(255, 255, 255) 60%
+  );
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0) 50%,
+    rgb(255, 255, 255) 50%
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: all ease 0.5s;
+}
+
+li::after {
+  position: absolute;
+  content: attr(data-content);
+  background: -webkit-linear-gradient(
+    top,
+    rgb(255, 255, 255) 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background: linear-gradient(
+    to top,
+    rgb(255, 255, 255) 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: all ease 0.5s;
+}
+
+li:hover::before {
+  transform: translateY(-3px);
+}
+
+li:hover::after {
+  transform: translateY(3px);
+}
+
+h1 {
+  line-height: 140px;
+  margin-top: 30px;
+  font-size: 150px;
+}
