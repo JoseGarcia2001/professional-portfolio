@@ -1,0 +1,39 @@
+{
+  "name": "professional-portfolio",
+  "version": "1.0.0",
+  "description": "Portafolio profesional para exponer proyectos",
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "webpack --config webpack.config.dev.js",
+    "start": "webpack --watch --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseGarcia2001/professional-portfolio.git"
+  },
+  "keywords": [],
+  "author": "Jose Garcia <jagarcia7655@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoseGarcia2001/professional-portfolio/issues"
+  },
+  "homepage": "https://github.com/JoseGarcia2001/professional-portfolio#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "css-minimizer-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "terser-webpack-plugin": "^5.1.2",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  }
+}
