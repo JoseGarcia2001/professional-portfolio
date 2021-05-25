@@ -73,7 +73,7 @@ header {
 }
 
 header ul li {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 body {
@@ -82,8 +82,8 @@ body {
 
 .bg {
   position: fixed;
-  background-image: url("../assets/images/image21.png");
-  opacity: 0.1;
+  background-image: url(../assets/images/movie.png);
+  opacity: 0.6;
   z-index: -1;
   pointer-events: none;
   height: 200%;
@@ -99,7 +99,7 @@ nav {
 }
 
 ul {
-  width: 600px;
+  width: 400px;
   display: flex;
   justify-content: space-around;
 }
@@ -164,9 +164,4 @@ h1 {
   line-height: 140px;
   margin-top: 30px;
   font-size: 150px;
-  font-style: italic;
-}
-
-h2 {
-  font-size: 80px;
 }

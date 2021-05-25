@@ -6,9 +6,6 @@ const Layout = () => (
     <header>
       <nav>
         <ul>
-          <li data-content="HOME">
-            <a href="./"></a>
-          </li>
           <li data-content="SOBRE MI">
             <a href="./"></a>
           </li>
@@ -20,11 +17,10 @@ const Layout = () => (
           </li>
         </ul>
       </nav>
-      <h2>
-        Hola! <br />
+      <h1>
+        Hola <br />
         Soy Jose Garcia
-      </h2>
-      <h1>Frontend Developer</h1>
+      </h1>
     </header>
     <main>
       <p></p>
