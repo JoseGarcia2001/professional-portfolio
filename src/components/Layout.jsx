@@ -13,17 +13,17 @@ const Layout = ({ children }) => (
       <nav className="nav-menu">
         <ul>
           <li>
-            <Link to="/dist/">
+            <Link to="/professional-portfolio/">
               <span data-content="Sobre mi"></span>
             </Link>
           </li>
           <li>
-            <Link to="/dist/">
+            <Link to="/professional-portfolio/">
               <span data-content="Proyectos"></span>
             </Link>
           </li>
           <li>
-            <Link to="/dist/">
+            <Link to="/professional-portfolio/">
               <span data-content="Contacto"></span>
             </Link>
           </li>

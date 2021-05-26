@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -36,7 +36,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(woff|woff2)$/,
+        test: /\.(woff|woff2|ttf)$/,
         type: "asset/resource",
         generator: {
           filename: "fonts/[name][contenthash][ext]",
