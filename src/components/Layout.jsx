@@ -20,12 +20,12 @@ const Layout = ({ children }) => (
             </Link>
           </li>
           <li>
-            <Link to="/professional-portfolio/">
+            <Link to="/Proyects">
               <span data-content="Proyectos"></span>
             </Link>
           </li>
           <li>
-            <Link to="/professional-portfolio/">
+            <Link to="/Contact">
               <span data-content="Contacto"></span>
             </Link>
           </li>

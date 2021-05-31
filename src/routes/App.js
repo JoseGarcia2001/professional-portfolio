@@ -9,8 +9,8 @@ const App = () => {
     <Router>
       <Layout>
         <Switch>
-          <Route exact path="/" children={About} />
-          <Route path="/about" component={Home} />
+          <Route exact path="/" children={Home} />
+          <Route path="/about" component={About} />
         </Switch>
       </Layout>
     </Router>
