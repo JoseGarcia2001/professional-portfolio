@@ -8,6 +8,11 @@
   }
 }
 
+h1 {
+  font-family: var(--titles-fonts);
+  font-weight: normal;
+}
+
 .hero {
   margin-top: 65px;
   display: flex;
@@ -17,7 +22,6 @@
 .hero h1 {
   font-weight: normal;
   font-size: 65px;
-  font-family: var(--titles-fonts);
 }
 
 .hero h2 {
@@ -26,15 +30,6 @@
   font-weight: normal;
   font-size: 35px;
   font-family: var(--titles-fonts);
-}
-
-@keyframes writeAnimation {
-  from {
-    translate-x: 0px;
-  }
-  to {
-    translate-x: 30px;
-  }
 }
 
 .cv {
@@ -83,10 +78,13 @@
 }
 
 .description {
-  margin-top: 57px;
   position: relative;
   width: 300px;
   height: 226px;
+}
+
+.description-home {
+  margin-top: 57px;
 }
 
 .description div {
@@ -101,7 +99,7 @@
   left: 16px;
 }
 
-.description div:nth-child(3) {
+.description .circle {
   width: 171px;
   height: 171px;
   bottom: 0;
@@ -116,11 +114,14 @@
 }
 
 .description div p {
-  padding-top: 11px;
-  padding-left: 11px;
   font-size: 12px;
   font-family: var(--principal-font);
   color: var(--gray);
+}
+
+.description-paragraph {
+  padding-top: 11px;
+  padding-left: 11px;
 }
 
 .description p span {

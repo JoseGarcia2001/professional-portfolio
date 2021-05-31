@@ -22,20 +22,18 @@ const Home = () => {
           <p>Descargar CV</p>
         </div>
       </div>
-
-      <div className="description">
+      <div className="description description-home">
         <div></div>
         <div></div>
-        <div></div>
+        <div className="circle"></div>
         <div>
-          <p>
+          <p className="description-paragraph">
             “Desde muy chico me encantó la <span>TECNOLOGÍA</span> y encontrar
             el porqué de las cosas, Algún día por un anuncio casual y mucha
             curiosidad, conocí la
             <span> PROGRAMACIÓN</span> En ese momento supe que debía hacer.”
           </p>
         </div>
-        {/* <div></div> */}
       </div>
     </main>
   );

@@ -110,6 +110,11 @@ header {
   position: relative;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .logo .line {
   position: absolute;
   background-color: var(--salmon);
@@ -202,6 +207,5 @@ header {
 
 .separator {
   display: block;
-  margin: 0 auto;
-  margin-top: 40px;
+  margin: 40px auto;
 }

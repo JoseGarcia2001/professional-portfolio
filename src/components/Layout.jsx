@@ -6,14 +6,16 @@ import pageDivisor from "../assets/images/Separador.svg";
 const Layout = ({ children }) => (
   <>
     <header>
-      <div className="logo">
-        <div className="line"></div>
-        <p>JG</p>
-      </div>
+      <Link className="logo" to="/">
+        <div className="logo">
+          <div className="line"></div>
+          <p>JG</p>
+        </div>
+      </Link>
       <nav className="nav-menu">
         <ul>
           <li>
-            <Link to="/professional-portfolio/">
+            <Link to="/About">
               <span data-content="Sobre mi"></span>
             </Link>
           </li>
