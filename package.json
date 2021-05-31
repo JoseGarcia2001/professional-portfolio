@@ -4,8 +4,6 @@
   "description": "Portafolio profesional para exponer proyectos",
   "main": "./src/index.js",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "webpack --config webpack.config.dev.js",
     "start": "webpack serve --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.js"
@@ -20,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/JoseGarcia2001/professional-portfolio/issues"
   },
-  "homepage": "https://JoseGarcia2001.github.io/professional-portfolio",
+  "homepage": "https://jogadev.com/",
   "dependencies": {
     "gh-pages": "^3.2.0",
     "react": "^17.0.2",
