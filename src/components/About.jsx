@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import "../styles/about.css";
-import cssLogo from "../assets/images/css-logo.png";
-import htmlLogo from "../assets/images/html-logo.png";
-import jsLogo from "../assets/images/js-logo.png";
-import reactLogo from "../assets/images/react-logo.png";
-import wbLogo from "../assets/images/wb-logo.png";
-import figmaLogo from "../assets/images/figma-logo.png";
-import gitLogo from "../assets/images/git-logo.png";
-import gamingLogo from "../assets/images/gaming.png";
-import mindfullnesLogo from "../assets/images/mindfullnes.png";
-import exerciseLogo from "../assets/images/exercise.png";
+import cssLogo from "../assets/images/css-logo.svg";
+import htmlLogo from "../assets/images/html-logo.svg";
+import jsLogo from "../assets/images/js-logo.svg";
+import reactLogo from "../assets/images/react-logo.svg";
+import wbLogo from "../assets/images/wb-logo.svg";
+import figmaLogo from "../assets/images/figma-logo.svg";
+import gitLogo from "../assets/images/git-logo.svg";
+import gamingLogo from "../assets/images/gaming.svg";
+import mindfullnesLogo from "../assets/images/mindfullnes.svg";
+import exerciseLogo from "../assets/images/exercise.svg";
 
 const About = () => {
   useEffect(() => {
