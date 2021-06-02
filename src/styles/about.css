@@ -2,7 +2,7 @@ h3 {
   display: inline-block;
   padding: 0px 17px;
   text-align: center;
-  font-family: var(--principal-font);
+  font-family: var(--titles-fonts);
   font-weight: bold;
   font-size: 1.6rem;
   background: linear-gradient(
@@ -32,7 +32,7 @@ p {
 }
 
 .description-about {
-  margin-top: 39px;
+  margin-top: 80px;
 }
 
 .description-about p {
@@ -40,11 +40,11 @@ p {
 }
 
 .technologies {
-  margin-top: 40px;
+  margin-top: 80px;
 }
 
 .technologies-container {
-  margin-top: 30px;
+  margin: 30px auto 0px;
   width: 223px;
   display: grid;
   grid-template-columns: repeat(3, 60px);
@@ -87,7 +87,7 @@ hobbies-item:nth-child(2) {
 
 .laboral-experience,
 .education-experience {
-  margin-top: 50px;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,7 +99,7 @@ hobbies-item:nth-child(2) {
 .education-container {
   width: 300px;
   position: relative;
-  margin-top: 10px;
+  margin-top: 30px;
   color: var(--gray);
   max-width: 80%;
   border-left: 2px solid white;
@@ -141,10 +141,18 @@ hobbies-item:nth-child(2) {
   font-weight: bold;
 }
 
+.hobbies {
+  margin-top: 60px;
+}
+
 .hobbies-container {
-  margin-top: 26px;
+  margin-top: 30px;
   display: flex;
   align-items: baseline;
+}
+
+.hobbies figcaption {
+  margin-top: 10px;
 }
 
 .hobbies-item:nth-child(2) {

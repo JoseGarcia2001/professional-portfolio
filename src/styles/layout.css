@@ -32,11 +32,12 @@
 
 :root {
   /* Fuentes */
-  --principal-font: "Bai Jamjuree", sans-serif;
-  /* --principal-font: "Univia", sans-serif; */
+  /* --principal-font: "Bai Jamjuree", sans-serif; */
+  --principal-font: "Univia", sans-serif;
   --secondary-font: "Work Sans", sans-serif;
-  --titles-fonts: "Turbulence Regular";
-  /* --titles-fonts: "Monument-Regular"; */
+  /* --titles-fonts: "Turbulence Regular"; */
+  --titles-fonts: "Monument-Regular";
+  --titles-fonts-bold: "Monument-Bold";
   --salmon: #ff4a4a;
   --gray: #9d9b9b;
 
@@ -44,6 +45,7 @@
 }
 
 html {
+  scroll-behavior: smooth;
   font-size: 62.5%;
 }
 
@@ -122,14 +124,15 @@ body {
 }
 
 header {
-  font-family: var(--principal-font);
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 60px;
+  margin-top: 17px;
+  display: grid;
+  row-gap: 25px;
+  grid-template-rows: repeat(2, 30px);
+  justify-content: center;
 }
 
 .logo {
+  font-family: var(--principal-font);
   width: 77px;
   display: flex;
   justify-content: center;
@@ -146,12 +149,11 @@ a {
   position: absolute;
   background-color: var(--salmon);
   width: 100%;
-  height: 9px;
+  height: 11px;
 }
 
 .logo p {
   position: absolute;
-  vertical-align: -13px;
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
@@ -159,14 +161,12 @@ a {
 }
 
 .nav-menu {
-  height: 30px;
-  width: 205px;
+  font-family: var(--titles-fonts-bold);
 }
 
 .nav-menu ul {
-  margin-top: 6px;
   display: grid;
-  grid-template-columns: repeat(3, 60px);
+  grid-template-columns: repeat(3, 100px);
   gap: 10px;
 }
 
@@ -181,7 +181,7 @@ a {
 .nav-menu li span {
   cursor: pointer;
   position: relative;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   display: flex;
   flex-direction: column;
 }
@@ -234,5 +234,5 @@ a {
 
 .separator {
   display: block;
-  margin: 40px auto;
+  margin: 80px auto 40px;
 }

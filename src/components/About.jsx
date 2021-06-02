@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/about.css";
 import cssLogo from "../assets/images/css-logo.png";
 import htmlLogo from "../assets/images/html-logo.png";
@@ -12,10 +12,13 @@ import mindfullnesLogo from "../assets/images/mindfullnes.png";
 import exerciseLogo from "../assets/images/exercise.png";
 
 const About = () => {
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
   return (
-    <main className="about">
+    <main className="about" id="about">
       <section className="description">
-        <h1>SOBRE MI</h1>
+        <h1>Sobre mi_</h1>
         <div className="description description-about">
           <div></div>
           <div></div>
