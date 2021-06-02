@@ -12,9 +12,9 @@ import mindfullnesLogo from "../assets/images/mindfullnes.png";
 import exerciseLogo from "../assets/images/exercise.png";
 
 const About = () => {
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="about" id="about">
       <section className="description">
