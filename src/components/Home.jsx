@@ -10,11 +10,11 @@ const Home = () => {
   return (
     <main className="hero">
       <h1>
-        HOLA SOY
+        Hola Soy
         <br />
-        &nbsp;JOSE GARCIA!
+        &nbsp;Jose Garcia!
       </h1>
-      <h2>FRONTEND DEVELOPER.</h2>
+      <h2>Frontend Developer.</h2>
       <div className="cv">
         <div></div>
         <div></div>

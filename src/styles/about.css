@@ -4,7 +4,7 @@ h3 {
   text-align: center;
   font-family: var(--principal-font);
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1.6rem;
   background: linear-gradient(
     0deg,
     #ff4a4a 0%,
@@ -27,7 +27,7 @@ p {
 }
 
 .about h1 {
-  font-size: 35px;
+  font-size: 3.5rem;
   text-align: center;
 }
 
@@ -55,7 +55,7 @@ p {
 
 .technologies-item,
 .hobbies-item {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-family: var(--principal-font);
   color: var(--gray);
   text-align: center;
@@ -92,7 +92,7 @@ hobbies-item:nth-child(2) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 1.2rem;
 }
 
 .experience-container,

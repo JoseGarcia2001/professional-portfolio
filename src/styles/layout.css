@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap");
 
 @font-face {
   font-family: "Turbulence Regular";
@@ -9,15 +8,43 @@
     url("../assets/fonts/Turbulence.woff") format("woff");
 }
 
+@font-face {
+  font-family: "Monument-Regular";
+  font-style: "normal";
+  font-weight: "normal";
+  src: local("MonumentExtended-Regular");
+  src: url("../assets/fonts/MonumentExtended-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Monument-Bold";
+  font-style: "normal";
+  font-weight: "bold";
+  src: local("MonumentExtended-Ultrabold");
+  src: url("../assets/fonts/MonumentExtended-Ultrabold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Univia";
+  src: local("UniviaPro-Regular");
+  src: url("../assets/fonts/UniviaPro-Regular.woff2") format("woff2");
+}
+
 :root {
   /* Fuentes */
   --principal-font: "Bai Jamjuree", sans-serif;
+  /* --principal-font: "Univia", sans-serif; */
   --secondary-font: "Work Sans", sans-serif;
   --titles-fonts: "Turbulence Regular";
+  /* --titles-fonts: "Monument-Regular"; */
   --salmon: #ff4a4a;
   --gray: #9d9b9b;
 
   /* Colores */
+}
+
+html {
+  font-size: 62.5%;
 }
 
 * {
@@ -126,7 +153,7 @@ a {
   position: absolute;
   vertical-align: -13px;
   text-align: center;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
   letter-spacing: 0.13em;
 }
@@ -154,7 +181,7 @@ a {
 .nav-menu li span {
   cursor: pointer;
   position: relative;
-  font-size: 14px;
+  font-size: 1.4rem;
   display: flex;
   flex-direction: column;
 }

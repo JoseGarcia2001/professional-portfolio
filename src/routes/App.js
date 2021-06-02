@@ -12,9 +12,9 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path="/" children={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/proyects" component={Proyects} />
-          <Route path="/contact" component={Contact} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/proyects" component={Proyects} />
+          <Route exact path="/contact" component={Contact} />
         </Switch>
       </Layout>
     </Router>
