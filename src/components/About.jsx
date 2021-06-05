@@ -47,7 +47,7 @@ const About = () => {
           </figure>
           <figure className="technologies-item">
             <img src={jsLogo} alt="javascript Logo"></img>
-            <figcaption>CSS</figcaption>
+            <figcaption>Javascript</figcaption>
           </figure>
           <figure className="technologies-item">
             <img src={wbLogo} alt="Webpack Logo"></img>
