@@ -38,12 +38,12 @@ const About = () => {
         <h3>Tecnologías que Domino</h3>
         <div className="technologies-container">
           <figure className="technologies-item">
-            <img src={cssLogo} alt="css Logo"></img>
-            <figcaption>CSS</figcaption>
-          </figure>
-          <figure className="technologies-item">
             <img src={htmlLogo} alt="html Logo"></img>
             <figcaption>HTML</figcaption>
+          </figure>
+          <figure className="technologies-item">
+            <img src={cssLogo} alt="css Logo"></img>
+            <figcaption>CSS</figcaption>
           </figure>
           <figure className="technologies-item">
             <img src={jsLogo} alt="javascript Logo"></img>
