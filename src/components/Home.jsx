@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 import "../styles/home.css";
 
 const Home = () => {
-  // const [isLoaded, setLoading] = useState(0);
-
-  // useEffect(() => {
-  //   document.title = `${isLoaded}`;
-  // });
   return (
     <main className="hero">
       <h1>
