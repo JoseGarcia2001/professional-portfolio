@@ -20,8 +20,7 @@ src/
     tokens.css  → color, tipografía, espacio, medidas. Único lugar con valores literales
     global.css  → reset acotado, base y utilidades
 public/
-  fonts/        → las cuatro faces del sitio original
-archive/        → el sitio de 2021 (React 17 + Webpack 5), sin tocar
+  fonts/        → las faces tipográficas del sitio original
 ```
 
 **Regla de dependencias:** las páginas importan de `data/`, `layouts/` y `components/`.
@@ -48,13 +47,24 @@ Gate de calidad antes de cualquier PR: `npm run check && npm run build`.
   la fuente y sirve como favicon. La línea de acento viene del `<div className="line">`
   del header original.
 - **El separador de secciones y la flecha diagonal** se recuperan tal cual del sitio
-  anterior (`archive/react-src/assets/images/`).
+  anterior, ahora como componentes SVG inline.
 - **Escala tipográfica fluida** con `clamp()`. El mínimo está calculado para que
   Monument, que es muy ancha, no desborde en 320px.
 - **Sin menú hamburguesa.** Cuatro enlaces cortos caben en una fila incluso en 320px,
   así que el nav no necesita estado ni JavaScript.
 - **Contraste verificado.** Todo el texto cumple WCAG AA (4.5:1) y los límites de
   controles cumplen 1.4.11 (3:1).
+
+## El sitio anterior
+
+La primera version (React 17 + Webpack 5, 2021) vive en el historial de git, hasta el
+commit `68edbaa`. Todo su contenido esta migrado: paleta, tipografias, monograma,
+separador, flecha, la cita del hero, la formacion y los datos de experiencia. Para
+consultar un archivo de entonces:
+
+```bash
+git show 68edbaa:src/components/Home.jsx
+```
 
 ## Pendiente
 

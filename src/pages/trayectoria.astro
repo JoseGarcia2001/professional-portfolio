@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Seccion from "../components/Seccion.astro";
-import { cita, formacion, trayectoria } from "../data/perfil";
+import { cita, formacion, intereses, sobreMi, stack, trayectoria } from "../data/perfil";
 ---
 
 <Base
@@ -53,6 +53,32 @@ import { cita, formacion, trayectoria } from "../data/perfil";
         ))
       }
     </ol>
+  </Seccion>
+
+  <Seccion titulo="Herramientas" etiqueta="Stack">
+    <dl class="stack">
+      {
+        Object.entries(stack).map(([grupo, items]) => (
+          <div class="stack__grupo">
+            <dt class="stack__titulo">{grupo}</dt>
+            <dd class="stack__items">
+              <ul>
+                {items.map((i) => (
+                  <li class="chip">{i}</li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Seccion>
+
+  <Seccion titulo="Fuera del trabajo" etiqueta="Personal">
+    <p class="sobre-mi measure">{sobreMi}</p>
+    <ul class="intereses">
+      {intereses.map((i) => <li class="chip">{i}</li>)}
+    </ul>
   </Seccion>
 </Base>
 
@@ -135,6 +161,62 @@ import { cita, formacion, trayectoria } from "../data/perfil";
   .formacion__institucion {
     font-size: var(--step--1);
     color: var(--fg-muted);
+  }
+
+  /* --- Stack --- */
+  .stack {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stack__grupo {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--border);
+  }
+
+  .stack__grupo:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stack__titulo {
+    font-family: var(--font-display);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .stack__items ul,
+  .intereses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .chip {
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+    color: var(--fg);
+  }
+
+  @media (min-width: 48rem) {
+    .stack__grupo {
+      grid-template-columns: 14rem 1fr;
+      gap: var(--space-8);
+      align-items: baseline;
+    }
+  }
+
+  /* --- Personal --- */
+  .sobre-mi {
+    font-size: var(--step-1);
+    color: var(--fg-muted);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-8);
   }
 
   @media (min-width: 48rem) {

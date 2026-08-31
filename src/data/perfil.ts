@@ -6,6 +6,13 @@
 export const cita =
   "Desde muy chico me encantó la tecnología y encontrar el porqué de las cosas. Un día, por un anuncio casual y mucha curiosidad, conocí la programación. En ese momento supe qué debía hacer.";
 
+/** Del sitio de 2021 (sección "Sobre mi"). Se conserva su formulación. */
+export const sobreMi =
+  "Soy una persona proactiva que día a día busca ser su mejor versión, sin parar de aprender y buscando retos con propósito. Me gusta vivir cada día haciendo lo que amo: crear soluciones con tecnología.";
+
+/** Del sitio de 2021 (sección "Hobbies"). */
+export const intereses = ["Ejercicio", "Mindfulness", "Gaming"] as const;
+
 export const posicionamiento = {
   titular: "Construyo equipos que construyen software.",
   entrada:
@@ -80,14 +87,14 @@ export const trayectoria: Etapa[] = [
     rol: "Desarrollador web independiente",
     contexto: "Proyectos por encargo",
     detalle:
-      "Construí presencia digital para negocios locales: páginas web, catálogos digitales y publicación en plataformas de terceros. Producto de punta a punta, solo.",
+      "Presencia digital para negocios locales: páginas web informativas, catálogos digitalizados, publicación en plataformas de terceros y piezas publicitarias. Producto de punta a punta, solo.",
   },
   {
     periodo: "2019 - 2020",
     rol: "Practicante de infraestructura",
     contexto: "Servicios de tecnología",
     detalle:
-      "Primer contacto profesional con servidores, redes y operación. Salí sabiendo que el software me interesaba más que el hardware.",
+      "Administración de bases de datos SQL y de servidores Linux, más mantenimiento preventivo y correctivo de equipos. Salí sabiendo que el software me interesaba más que el hardware.",
   },
   {
     periodo: "2016 - 2020",
@@ -97,6 +104,15 @@ export const trayectoria: Etapa[] = [
       "Armé y reparé computadores por mi cuenta. Aprendí a diagnosticar antes de cambiar piezas. Es el mismo método que uso hoy para depurar software, y de aquí sale el nombre jogadev.",
   },
 ];
+
+/** Herramientas con las que trabajo hoy. Todas verificables en los proyectos
+ * públicos listados más abajo. */
+export const stack = {
+  Lenguajes: ["TypeScript", "JavaScript", "SQL"],
+  Frontend: ["React", "Next.js", "Astro", "CSS"],
+  Datos: ["Postgres", "Drizzle"],
+  Infraestructura: ["Docker", "Linux", "Cloudflare", "Git"],
+} as const;
 
 export interface Formacion {
   periodo: string;
