@@ -25,7 +25,7 @@ export const legal = [
 ] as const;
 
 export const contacto = {
-  email: "hola@jogadev.com",
+  email: "jagarcia7655@gmail.com",
   linkedin: "https://www.linkedin.com/in/joga-dev/",
   github: "https://github.com/JoseGarcia2001",
 } as const;
