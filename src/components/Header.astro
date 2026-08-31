@@ -1,0 +1,129 @@
+---
+import Monogram from "./Monogram.astro";
+import { nav, site } from "../data/site";
+
+/* La ruta actual marca el enlace activo. Astro.url.pathname puede traer
+ * barra final según el host, así que se normaliza antes de comparar. */
+const actual = Astro.url.pathname.replace(/\/+$/, "") || "/";
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="marca" href="/" aria-label={`${site.nombre}, inicio`}>
+      <Monogram size={46} />
+      <span class="marca__texto">{site.marca}</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__lista">
+        {
+          nav.map((item) => {
+            const activo = item.href === actual;
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={["nav__enlace", { "nav__enlace--activo": activo }]}
+                  aria-current={activo ? "page" : undefined}
+                >
+                  {item.texto}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+  }
+
+  .marca {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--tap);
+    transition: color var(--transition);
+  }
+
+  .marca:hover {
+    color: var(--accent);
+  }
+
+  .marca__texto {
+    font-family: var(--font-display);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+  }
+
+  .nav {
+    width: 100%;
+  }
+
+  .nav__lista {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .nav__enlace {
+    display: flex;
+    align-items: center;
+    min-height: var(--tap);
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    color: var(--fg-muted);
+    border-bottom: 2px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+  }
+
+  .nav__enlace:hover,
+  .nav__enlace:focus-visible {
+    color: var(--fg);
+  }
+
+  .nav__enlace--activo {
+    color: var(--fg);
+    border-bottom-color: var(--accent);
+  }
+
+  /* Desde tablet: marca y navegación en la misma fila. */
+  @media (min-width: 40rem) {
+    .header__inner {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-block: var(--space-4);
+    }
+
+    .nav {
+      width: auto;
+    }
+
+    .nav__lista {
+      gap: var(--space-1);
+    }
+
+    .nav__enlace {
+      font-size: var(--step-0);
+      padding-inline: var(--space-4);
+    }
+  }
+</style>

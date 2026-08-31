@@ -1,0 +1,44 @@
+---
+/* Separador de secciones del sitio de 2021, copiado tal cual de
+ * archive/react-src/assets/images/Separador.svg. Solo cambia el stroke, que
+ * pasa de white a currentColor para que herede el color del contexto. */
+---
+
+<div class="separador" role="presentation">
+  <svg width="173" height="15" viewBox="0 0 173 15" fill="none" aria-hidden="true">
+    <path d="M0 8.13867H56.5248" stroke="currentColor" stroke-width="3" />
+    <path d="M116.475 8.13867H173" stroke="currentColor" stroke-width="3" />
+    <path d="M79.6486 3L86.5 11.5644L92.9233 3" stroke="currentColor" stroke-width="3" />
+    <line x1="101.712" y1="12.2166" x2="111.989" y2="1.93933" stroke="currentColor" stroke-width="3" />
+    <line
+      y1="-1.5"
+      x2="14.5342"
+      y2="-1.5"
+      transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 69.3713 13.2772)"
+      stroke="currentColor"
+      stroke-width="3"
+    />
+    <line x1="94.0037" y1="12.2166" x2="104.281" y2="1.93933" stroke="currentColor" stroke-width="3" />
+    <line
+      y1="-1.5"
+      x2="14.5342"
+      y2="-1.5"
+      transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 77.0792 13.2772)"
+      stroke="currentColor"
+      stroke-width="3"
+    />
+  </svg>
+</div>
+
+<style>
+  .separador {
+    display: flex;
+    justify-content: center;
+    color: var(--border-strong);
+  }
+
+  .separador svg {
+    width: min(173px, 60%);
+    height: auto;
+  }
+</style>

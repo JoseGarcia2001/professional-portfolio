@@ -1,0 +1,104 @@
+---
+import Base from "../layouts/Base.astro";
+import Seccion from "../components/Seccion.astro";
+import Prosa from "../components/Prosa.astro";
+import { contacto, site } from "../data/site";
+
+const actualizado = "31 de agosto de 2026";
+---
+
+<Base
+  titulo="Política de privacidad"
+  descripcion="Qué datos trata jogadev.com y los servicios personales alojados en el dominio."
+>
+  <Seccion titulo="Política de privacidad" etiqueta="Legal">
+    <Prosa>
+      <p class="actualizado">Última actualización: {actualizado}</p>
+
+      <h2>Quién responde por este sitio</h2>
+      <p>
+        <strong>{site.nombre}</strong> opera <strong>{site.url}</strong> como persona natural.
+        No hay empresa detrás ni tratamiento de datos por cuenta de terceros. Para cualquier
+        asunto sobre esta política, escribe a
+        <a href={`mailto:${contacto.email}`}>{contacto.email}</a>.
+      </p>
+
+      <h2>Qué recoge el sitio público</h2>
+      <p>
+        Nada. Este sitio es un conjunto de páginas estáticas. No usa cookies, no incrusta
+        analítica, no carga recursos de terceros y no tiene formularios. No se crea ningún
+        perfil de quien navega.
+      </p>
+      <p>
+        El proveedor de hospedaje registra datos técnicos de conexión (dirección IP, agente de
+        usuario, hora de la petición) para servir las páginas y protegerse de abuso. Es un
+        registro operativo del proveedor: no se consulta, no se cruza con nada y no se usa
+        para publicidad.
+      </p>
+
+      <h2>Servicios personales en subdominios</h2>
+      <p>
+        El dominio también aloja aplicaciones privadas de uso exclusivamente personal, en
+        subdominios separados. Estas aplicaciones exigen inicio de sesión y solo admiten mi
+        propia cuenta: no hay registro abierto ni acceso para otras personas.
+      </p>
+      <p>Sobre esos servicios privados aplica lo siguiente:</p>
+      <ul>
+        <li>
+          <strong>Datos de Google.</strong> Cuando autorizo el acceso a mi propia cuenta de
+          Google, la aplicación lee únicamente los mensajes necesarios para procesar mis
+          registros personales. El acceso es de solo lectura, los datos se guardan en un
+          servidor bajo mi control y nunca se transfieren, venden ni comparten con terceros.
+          Tampoco se usan para entrenar modelos.
+        </li>
+        <li>
+          <strong>Finalidad.</strong> Los datos se usan solo para la función que pedí:
+          organizar mi información personal. No hay otra finalidad.
+        </li>
+        <li>
+          <strong>Revocación.</strong> Puedo retirar el permiso en cualquier momento desde la
+          configuración de seguridad de mi cuenta de Google. Al retirarlo, la aplicación deja
+          de acceder de inmediato.
+        </li>
+        <li>
+          <strong>Terceros.</strong> Ningún dato de estos servicios se comparte con otras
+          personas ni con otras plataformas.
+        </li>
+      </ul>
+      <p>
+        El uso de datos de las APIs de Google cumple la
+        <a
+          href="https://developers.google.com/terms/api-services-user-data-policy"
+          rel="noopener"
+          target="_blank">Política de Datos de Usuario de los Servicios de las APIs de Google</a
+        >, incluidos sus requisitos de uso limitado.
+      </p>
+
+      <h2>Seguridad</h2>
+      <p>
+        Todo el tráfico viaja cifrado por HTTPS. Las aplicaciones privadas están detrás de
+        autenticación y de una red privada; los secretos no se guardan en el código fuente.
+      </p>
+
+      <h2>Menores de edad</h2>
+      <p>
+        El sitio no está dirigido a menores de 14 años y no recoge datos de ninguna persona,
+        sin importar su edad.
+      </p>
+
+      <h2>Tus derechos</h2>
+      <p>
+        Este sitio no almacena datos personales de sus visitantes, así que no hay información
+        que consultar, corregir ni eliminar. Si crees que existe algún dato tuyo asociado al
+        dominio, escribe a <a href={`mailto:${contacto.email}`}>{contacto.email}</a> y
+        respondo en un plazo máximo de quince días hábiles.
+      </p>
+
+      <h2>Cambios</h2>
+      <p>
+        Si esta política cambia, la fecha del encabezado cambia con ella. Las versiones
+        anteriores quedan en el historial público del repositorio del sitio.
+      </p>
+    </Prosa>
+  </Seccion>
+</Base>

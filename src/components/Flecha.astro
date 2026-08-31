@@ -1,0 +1,30 @@
+---
+/* Flecha diagonal del sitio de 2021 (arrow.svg). Marca dirección en enlaces
+ * y botones, igual que en el hero original. */
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 14, class: className } = Astro.props;
+---
+
+<svg
+  class:list={["flecha", className]}
+  width={size}
+  height={size}
+  viewBox="0 0 63 64"
+  fill="none"
+  aria-hidden="true"
+>
+  <path
+    d="M5.01694 27.6688L46.9924 27.669L26.1564 6.83218L31.8372 1.15138L62.3715 31.6858L31.8372 62.2201L26.1564 56.5393L46.9924 35.7025L5.01694 35.7027V27.6688Z"
+    fill="currentColor"
+  />
+</svg>
+
+<style>
+  .flecha {
+    flex-shrink: 0;
+  }
+</style>

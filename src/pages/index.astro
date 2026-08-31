@@ -1,0 +1,267 @@
+---
+import Base from "../layouts/Base.astro";
+import Seccion from "../components/Seccion.astro";
+import Flecha from "../components/Flecha.astro";
+import Separador from "../components/Separador.astro";
+import { capacidades, posicionamiento, trayectoria } from "../data/perfil";
+import { contacto, site } from "../data/site";
+
+/* La portada resume la trayectoria: las tres etapas más recientes. */
+const recientes = trayectoria.slice(0, 3);
+---
+
+<Base titulo={`${site.nombre} · ${site.rol}`} tituloExacto>
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="eyebrow">{site.nombre}</p>
+      <h1 class="hero__titular">{posicionamiento.titular}</h1>
+      <p class="hero__rol">{site.rol}</p>
+      <p class="hero__entrada measure">{posicionamiento.entrada}</p>
+      <div class="hero__acciones">
+        <a class="boton boton--primario" href="/trayectoria">Ver trayectoria <Flecha /></a>
+        <a class="boton" href="/contacto">Hablemos <Flecha /></a>
+      </div>
+    </div>
+  </section>
+
+  <Seccion titulo="Qué hago" etiqueta="Capacidades">
+    <ul class="capacidades">
+      {
+        capacidades.map((c) => (
+          <li class="tarjeta">
+            <h3 class="tarjeta__titulo">{c.titulo}</h3>
+            <p class="tarjeta__detalle">{c.detalle}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Seccion>
+
+  <Seccion titulo="Dónde estoy" etiqueta="Trayectoria">
+    <ol class="etapas">
+      {
+        recientes.map((e) => (
+          <li class="etapa">
+            <p class="etapa__periodo">{e.periodo}</p>
+            <div>
+              <h3 class="etapa__rol">{e.rol}</h3>
+              <p class="etapa__contexto">{e.contexto}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="seccion__pie">
+      <a class="link enlace-flecha" href="/trayectoria"
+        >Toda la trayectoria, desde 2016 <Flecha /></a
+      >
+    </p>
+  </Seccion>
+
+  <Separador />
+
+  <Seccion class="cierre">
+    <p class="cierre__texto">{posicionamiento.cierre}</p>
+    <p class="cierre__nota measure">{posicionamiento.cierreNota}</p>
+    <a class="boton boton--primario" href={`mailto:${contacto.email}`}
+      >{contacto.email} <Flecha /></a
+    >
+  </Seccion>
+</Base>
+
+<style>
+  /* --- Hero --- */
+  .hero {
+    padding-block: var(--space-16) var(--space-12);
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .hero__titular {
+    max-width: 22ch;
+  }
+
+  .hero__rol {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    color: var(--accent);
+    /* El titular y el rol son un solo bloque: el gap del flex los separaría igual
+     * que del resto, y aquí deben leerse juntos. */
+    margin-top: calc(var(--space-6) * -1 + var(--space-2));
+  }
+
+  .hero__entrada {
+    font-size: var(--step-1);
+    color: var(--fg-muted);
+    line-height: var(--leading-snug);
+  }
+
+  .hero__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  @media (min-width: 48rem) {
+    .hero {
+      padding-block: var(--space-24) var(--space-16);
+    }
+  }
+
+  /* --- Botones --- */
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    min-height: var(--tap);
+    padding: var(--space-3) var(--space-6);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color var(--transition), border-color var(--transition),
+      color var(--transition);
+  }
+
+  .boton:hover,
+  .boton:focus-visible {
+    background: var(--bg-hover);
+    border-color: var(--fg-muted);
+  }
+
+  .boton--primario {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+
+  .boton--primario:hover,
+  .boton--primario:focus-visible {
+    background: var(--accent-dim);
+    border-color: var(--accent-dim);
+    color: var(--fg);
+  }
+
+  /* --- Capacidades --- */
+  /* Son tres tarjetas fijas: auto-fit dejaría una sola en la segunda fila
+   * en el rango de tablet. Una columna, y tres cuando de verdad caben. */
+  .capacidades {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  /* Tablet: dos columnas y la tercera tarjeta abarca la fila entera.
+   * Así ninguna fila queda a medias. */
+  @media (min-width: 40rem) and (max-width: 55.99rem) {
+    .capacidades {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .capacidades > li:last-child {
+      grid-column: span 2;
+    }
+  }
+
+  @media (min-width: 56rem) {
+    .capacidades {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .tarjeta {
+    padding: var(--space-6);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    border-top: 2px solid var(--accent);
+  }
+
+  .tarjeta__titulo {
+    font-size: var(--step-0);
+    /* balance, heredado de los títulos, parte en dos líneas lo que cabe en una. */
+    text-wrap: pretty;
+    margin-bottom: var(--space-3);
+  }
+
+  .tarjeta__detalle {
+    font-size: var(--step--1);
+    color: var(--fg-muted);
+    /* En la tarjeta ancha de tablet el párrafo se estiraría a 700px. */
+    max-width: 52ch;
+  }
+
+  /* --- Etapas resumidas --- */
+  .etapas {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .etapa {
+    display: grid;
+    gap: var(--space-1);
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--border);
+  }
+
+  .etapa:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .etapa__periodo {
+    font-size: var(--step--1);
+    color: var(--fg-subtle);
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .etapa__rol {
+    font-size: var(--step-1);
+  }
+
+  .etapa__contexto {
+    font-size: var(--step--1);
+    color: var(--fg-muted);
+    margin-top: var(--space-1);
+  }
+
+  .seccion__pie {
+    margin-top: var(--space-8);
+    font-size: var(--step--1);
+  }
+
+  .enlace-flecha {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  @media (min-width: 48rem) {
+    .etapa {
+      grid-template-columns: 12rem 1fr;
+      gap: var(--space-8);
+      align-items: baseline;
+    }
+  }
+
+  /* --- Cierre --- */
+  .cierre__texto {
+    max-width: var(--measure-display);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-6);
+  }
+
+  .cierre__nota {
+    font-size: var(--step-0);
+    color: var(--fg-muted);
+    margin-bottom: var(--space-8);
+  }
+</style>
