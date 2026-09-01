@@ -1,9 +1,8 @@
 /**
  * Worker del sitio. Solo hace dos redirecciones y delega el resto a los assets.
  *
- * Vive aqui y no en los ajustes de la zona a proposito: el token de la cuenta
- * no puede escribir Zone Settings, y ademas asi la regla es explicita,
- * versionada y viaja con el codigo.
+ * La regla vive aqui y no solo en los ajustes de la zona porque asi es
+ * explicita, versionada y viaja con el codigo.
  */
 
 interface Env {
@@ -17,8 +16,10 @@ export default {
     const url = new URL(request.url);
     let redirigir = false;
 
-    // 1. HTTP -> HTTPS. Reemplaza el ajuste "Always Use HTTPS" de la zona,
-    //    que esta en off y no se puede activar con este token.
+    // 1. HTTP -> HTTPS. La zona ya tiene "Always Use HTTPS" encendido, asi que
+    //    Cloudflare redirige en el borde y este bloque casi nunca se ejecuta.
+    //    Se conserva como respaldo: si alguien apaga ese ajuste, el sitio sigue
+    //    sin servir HTTP.
     if (url.protocol === "http:") {
       url.protocol = "https:";
       redirigir = true;
