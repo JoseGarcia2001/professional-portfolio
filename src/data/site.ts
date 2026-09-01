@@ -25,7 +25,9 @@ export const legal = [
 ] as const;
 
 export const contacto = {
-  email: "jagarcia7655@gmail.com",
+  /* Alias del dominio, no el Gmail personal: reenvía por Cloudflare Email
+   * Routing. Si empieza a llegar spam se rota el alias sin tocar la bandeja. */
+  email: "hola@jogadev.com",
   linkedin: "https://www.linkedin.com/in/joga-dev/",
   github: "https://github.com/JoseGarcia2001",
 } as const;
