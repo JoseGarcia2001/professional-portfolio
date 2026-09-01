@@ -38,6 +38,30 @@ npm run preview   # sirve dist/
 
 Gate de calidad antes de cualquier PR: `npm run check && npm run build`.
 
+## Despliegue
+
+El sitio corre en Cloudflare Workers con assets estaticos (`wrangler.jsonc`).
+El worker (`src/worker/index.ts`) solo hace dos redirecciones: HTTP a HTTPS y
+`www` al apex. El resto lo sirve el binding `ASSETS`.
+
+**Automatico:** un merge a `main` dispara `.github/workflows/deploy.yml`, que
+verifica tipos, construye, comprueba que `dist/` tiene las siete paginas y el
+sitemap, publica, y valida contra `https://jogadev.com` que las rutas
+responden 200 y una inexistente responde 404.
+
+**Manual** (necesita `CLOUDFLARE_API_TOKEN` en el entorno):
+
+```bash
+npm run deploy
+```
+
+### Configuracion necesaria una sola vez
+
+El workflow necesita el secret `CLOUDFLARE_API_TOKEN` en
+*Settings > Secrets and variables > Actions*. Crea el token en Cloudflare con
+un unico permiso: **Account > Workers Scripts: Edit**. No le des acceso a DNS
+ni a Zone Settings: el deploy no los usa, y este repo es publico.
+
 ## Decisiones de diseño
 
 - **Paleta y tipografías del sitio de 2021.** `#ff4a4a` de acento, `#9d9b9b` de gris,
