@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { site } from "../data/site";
+import { contacto, site } from "../data/site";
 
 interface Props {
   titulo: string;
@@ -23,6 +23,33 @@ const rutaLimpia = Astro.url.pathname
   .replace(/\.html$/, "");
 const canonical = new URL(rutaLimpia, site.url).href;
 const og = new URL("/og.png", site.url).href;
+
+/* Datos estructurados. Solo hechos públicos y verificables: sin empleadores,
+ * sin cifras. Se emite una vez, en el layout, para que todas las páginas lo
+ * lleven y Google asocie el dominio a una persona. */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.nombre,
+  jobTitle: site.rol,
+  url: site.url,
+  email: `mailto:${contacto.email}`,
+  image: og,
+  description: site.descripcion,
+  sameAs: [contacto.linkedin, contacto.github],
+  knowsLanguage: ["es", "en"],
+  alumniOf: {
+    "@type": "EducationalOrganization",
+    name: "SENA",
+  },
+  knowsAbout: [
+    "Engineering management",
+    "TypeScript",
+    "React",
+    "Arquitectura de software",
+    "Liderazgo tecnico",
+  ],
+};
 ---
 
 <!doctype html>
@@ -52,6 +79,8 @@ const og = new URL("/og.png", site.url).href;
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="theme-color" content="#000000" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 
     <!-- Las dos faces del cuerpo y de los títulos se piden temprano: evitan el
          salto de texto cuando la fuente de respaldo ya pintó. -->

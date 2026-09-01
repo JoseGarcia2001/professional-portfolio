@@ -5,9 +5,13 @@ interface Props {
   etiqueta?: string;
   id?: string;
   class?: string;
+  /** Nivel del título. La sección principal de cada página usa "h1": sin él
+   * la página no declara su tema y la jerarquía de encabezados queda rota. */
+  como?: "h1" | "h2";
 }
 
-const { titulo, etiqueta, id, class: className } = Astro.props;
+const { titulo, etiqueta, id, class: className, como = "h2" } = Astro.props;
+const Titulo = como;
 ---
 
 <section class:list={["seccion", className]} id={id}>
@@ -16,7 +20,7 @@ const { titulo, etiqueta, id, class: className } = Astro.props;
       (etiqueta || titulo) && (
         <header class="seccion__head">
           {etiqueta && <p class="eyebrow">{etiqueta}</p>}
-          {titulo && <h2 class="seccion__titulo">{titulo}</h2>}
+          {titulo && <Titulo class="seccion__titulo">{titulo}</Titulo>}
         </header>
       )
     }
@@ -36,6 +40,8 @@ const { titulo, etiqueta, id, class: className } = Astro.props;
     margin-bottom: var(--space-8);
   }
 
+  /* El tamaño lo fija la clase: un h1 de sección no debe crecer al tamaño
+   * del titular de la portada. */
   .seccion__titulo {
     font-size: var(--step-2);
   }
