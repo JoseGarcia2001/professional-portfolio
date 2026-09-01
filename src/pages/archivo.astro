@@ -1,0 +1,151 @@
+---
+import Base from "../layouts/Base.astro";
+import Seccion from "../components/Seccion.astro";
+import Flecha from "../components/Flecha.astro";
+import { archivo } from "../data/perfil";
+---
+
+<Base
+  titulo="Archivo"
+  descripcion="Los proyectos con los que aprendí a programar en 2021, todavía en línea: un aula virtual, un panel administrativo en React y en Vue, y una app de pedidos."
+>
+  <Seccion titulo="Con lo que aprendí a programar" etiqueta="Archivo" como="h1">
+    <p class="intro measure">
+      Todo esto es de 2021, el año en que empecé. Lo dejo publicado y funcionando porque el
+      punto de partida también es parte de la historia.
+    </p>
+
+    <ul class="rejilla">
+      {
+        archivo.map((p) => (
+          <li class="pieza">
+            <div class="pieza__head">
+              <p class="pieza__anio">{p.anio}</p>
+              <h2 class="pieza__nombre">{p.nombre}</h2>
+            </div>
+            <p class="pieza__descripcion">{p.descripcion}</p>
+            <ul class="stack">
+              {p.stack.map((t) => (
+                <li class="stack__item">{t}</li>
+              ))}
+            </ul>
+            <div class="pieza__enlaces">
+              {p.demo && (
+                <a class="link" href={p.demo} rel="noopener" target="_blank">
+                  Abrir <Flecha />
+                </a>
+              )}
+              <a class="link pieza__repo" href={p.repo} rel="noopener" target="_blank">
+                Código <Flecha />
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="nota measure">
+      Las aplicaciones corren tal como se escribieron. Lo único que cambió es el empaquetador:
+      el de 2021 ya no arranca con las versiones actuales de Node, y sin actualizarlo estas
+      piezas dejarían de poder reconstruirse.
+    </p>
+  </Seccion>
+</Base>
+
+<style>
+  .intro {
+    font-size: var(--step-1);
+    color: var(--fg-muted);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-12);
+  }
+
+  .rejilla {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 40rem) {
+    .rejilla {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .pieza {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition);
+  }
+
+  .pieza:hover {
+    border-color: var(--border-strong);
+  }
+
+  .pieza__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .pieza__nombre {
+    font-size: var(--step-1);
+  }
+
+  .pieza__anio {
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .pieza__descripcion {
+    font-size: var(--step--1);
+    color: var(--fg-muted);
+    flex-grow: 1;
+    max-width: 52ch;
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .stack__item {
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+    color: var(--fg-subtle);
+  }
+
+  .pieza__enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+
+  .pieza__enlaces .link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--tap);
+    font-size: var(--step--1);
+  }
+
+  /* El repositorio es la referencia secundaria: la acción principal es abrir
+   * la aplicación. */
+  .pieza__repo {
+    color: var(--fg-subtle);
+  }
+
+  .nota {
+    margin-top: var(--space-12);
+    font-size: var(--step--1);
+    color: var(--fg-subtle);
+  }
+</style>
