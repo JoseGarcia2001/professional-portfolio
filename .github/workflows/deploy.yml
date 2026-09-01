@@ -1,0 +1,82 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Un despliegue a la vez. Si llegan dos merges seguidos, el segundo espera:
+# cancelarlo dejaria el sitio publicado desde el commit anterior.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    name: CI (check · build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Verificar tipos
+        run: npm run check
+
+      - name: Construir
+        run: npm run build
+
+      # El sitio es estatico: si el build no genero las paginas, el deploy
+      # publicaria un dist vacio y tumbaria jogadev.com sin fallar.
+      - name: Verificar la salida del build
+        run: |
+          for f in index trayectoria proyectos contacto privacidad terminos 404; do
+            test -s "dist/$f.html" || { echo "falta dist/$f.html"; exit 1; }
+          done
+          test -s dist/sitemap-index.xml || { echo "falta el sitemap"; exit 1; }
+          echo "$(find dist -type f | wc -l) archivos en dist"
+
+  deploy:
+    name: Deploy a Cloudflare Workers
+    needs: ci
+    # Solo en main. Un PR desde un fork nunca llega aqui, asi que el token
+    # no queda expuesto a codigo de terceros.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Construir
+        run: npm run build
+
+      - name: Publicar
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # El deploy puede devolver exito y aun asi servir mal: se comprueba
+      # contra el dominio real, no contra la respuesta de la API.
+      - name: Comprobar el sitio publicado
+        run: |
+          sleep 10
+          for ruta in / /trayectoria /proyectos /contacto /privacidad /terminos; do
+            code=$(curl -sS -o /dev/null -m 20 -w '%{http_code}' "https://jogadev.com$ruta")
+            echo "$ruta -> $code"
+            [ "$code" = "200" ] || exit 1
+          done
+          code=$(curl -sS -o /dev/null -m 20 -w '%{http_code}' https://jogadev.com/no-existe)
+          echo "/no-existe -> $code"
+          [ "$code" = "404" ] || exit 1

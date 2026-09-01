@@ -14,7 +14,14 @@ interface Props {
 const { titulo, descripcion = site.descripcion, tituloExacto = false } = Astro.props;
 
 const tituloPagina = tituloExacto ? titulo : `${titulo} · ${site.nombre}`;
-const canonical = new URL(Astro.url.pathname, site.url).href;
+/* build.format: "file" hace que Astro.url.pathname sea "/trayectoria.html".
+ * Esa URL redirige (307) en producción, así que un canonical hacia ella le
+ * indica a Google una dirección que no es la definitiva. Se normaliza a la
+ * ruta limpia, la misma que publica el sitemap. */
+const rutaLimpia = Astro.url.pathname
+  .replace(/index\.html$/, "")
+  .replace(/\.html$/, "");
+const canonical = new URL(rutaLimpia, site.url).href;
 const og = new URL("/og.png", site.url).href;
 ---
 
