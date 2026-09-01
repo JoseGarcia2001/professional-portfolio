@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+import Seccion from "../components/Seccion.astro";
+import Prosa from "../components/Prosa.astro";
+import { contacto, site } from "../data/site";
+
+const actualizado = "31 de agosto de 2026";
+---
+
+<Base
+  titulo="Términos de uso"
+  descripcion="Condiciones de uso del sitio jogadev.com y de los servicios alojados en el dominio."
+>
+  <Seccion titulo="Términos de uso" etiqueta="Legal">
+    <Prosa>
+      <p class="actualizado">Última actualización: {actualizado}</p>
+
+      <h2>Aceptación</h2>
+      <p>
+        Al usar <strong>{site.url}</strong> aceptas estos términos. Si no estás de acuerdo con
+        ellos, no uses el sitio.
+      </p>
+
+      <h2>Qué es este sitio</h2>
+      <p>
+        Es el sitio personal de <strong>{site.nombre}</strong>. Presenta su perfil
+        profesional y sus proyectos propios. No vende productos, no ofrece servicios en línea
+        y no admite registro de usuarios.
+      </p>
+
+      <h2>Contenido</h2>
+      <p>
+        Los textos, el diseño y el logotipo son de mi autoría y quedan protegidos por derechos
+        de autor. Puedes citar fragmentos con atribución y enlace. Para reproducir el sitio
+        completo o usar el logotipo, pide permiso primero.
+      </p>
+      <p>
+        Las opiniones publicadas aquí son personales. No representan la posición de ninguna
+        organización con la que trabaje o haya trabajado.
+      </p>
+      <p>
+        El código de mis proyectos personales se publica por separado en repositorios abiertos,
+        cada uno con su propia licencia. Esa licencia manda sobre el código; estos términos
+        cubren el sitio.
+      </p>
+
+      <h2>Uso aceptable</h2>
+      <p>Al usar el sitio te comprometes a no:</p>
+      <ul>
+        <li>intentar acceder a subdominios o sistemas privados sin autorización;</li>
+        <li>
+          extraer contenido de forma automatizada a un ritmo que degrade el servicio para
+          otras personas;
+        </li>
+        <li>suplantar mi identidad o presentar este contenido como propio;</li>
+        <li>usar el sitio para cualquier fin ilícito.</li>
+      </ul>
+
+      <h2>Servicios privados</h2>
+      <p>
+        Los subdominios de <strong>jogadev.com</strong> alojan aplicaciones privadas de uso
+        exclusivamente personal. No están abiertas al público y su acceso está restringido a mi
+        propia cuenta. Estos términos no otorgan ningún derecho de acceso a ellas.
+      </p>
+
+      <h2>Disponibilidad y garantías</h2>
+      <p>
+        El sitio se ofrece tal como está. No garantizo disponibilidad continua ni ausencia de
+        errores, y puedo modificar o retirar cualquier contenido sin aviso previo. En la medida
+        que la ley lo permita, no asumo responsabilidad por daños derivados del uso del sitio.
+      </p>
+
+      <h2>Enlaces externos</h2>
+      <p>
+        Algunos enlaces llevan a sitios de terceros, como LinkedIn o GitHub. No controlo su
+        contenido ni sus políticas, y su uso se rige por sus propios términos.
+      </p>
+
+      <h2>Ley aplicable</h2>
+      <p>
+        Estos términos se rigen por la legislación de la República de Colombia. Cualquier
+        controversia se resuelve ante los jueces competentes de ese país.
+      </p>
+
+      <h2>Contacto</h2>
+      <p>
+        Dudas sobre estos términos:
+        <a href={`mailto:${contacto.email}`}>{contacto.email}</a>.
+      </p>
+    </Prosa>
+  </Seccion>
+</Base>

@@ -1,0 +1,43 @@
+---
+/* Monograma JG. SVG inline: escala sin perder nitidez y sirve como logo y favicon.
+ * Las letras son paths geométricos, no texto, así que no dependen de la fuente.
+ * La línea salmón viene del <div className="line"> del sitio de 2021.
+ *
+ * Geometría (viewBox 68): la J baja de y=18 a y=34 y engancha con radio 7;
+ * la G es un arco de radio 9.5 centrado en (49, 29.5), abierto 70° a la derecha.
+ * linecap es "butt": el cuadrado añade un pico falso en el extremo del arco. */
+interface Props {
+  size?: number;
+  title?: string;
+  class?: string;
+}
+
+const { size = 40, title, class: className } = Astro.props;
+---
+
+<svg
+  class:list={["monogram", className]}
+  width={size}
+  height={size}
+  viewBox="0 0 68 68"
+  fill="none"
+  role={title ? "img" : "presentation"}
+  aria-hidden={title ? undefined : "true"}
+  aria-label={title}
+>
+  <g stroke="currentColor" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- J: vertical con gancho a la izquierda -->
+    <path d="M24 18 V34 A7 7 0 0 1 10 34" />
+    <!-- G: arco abierto a la derecha con barra al centro -->
+    <path d="M56.8 24 A9.5 9.5 0 1 0 56.8 35 L56.8 29.5 H49" />
+  </g>
+  <!-- Línea de acento -->
+  <path d="M7.5 50 H61" stroke="var(--accent)" stroke-width="4" stroke-linecap="butt" />
+</svg>
+
+<style>
+  .monogram {
+    display: block;
+    flex-shrink: 0;
+  }
+</style>

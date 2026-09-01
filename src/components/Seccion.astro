@@ -1,0 +1,52 @@
+---
+/* Envoltura de sección: ritmo vertical y encabezado consistentes en todas las páginas. */
+interface Props {
+  titulo?: string;
+  etiqueta?: string;
+  id?: string;
+  class?: string;
+}
+
+const { titulo, etiqueta, id, class: className } = Astro.props;
+---
+
+<section class:list={["seccion", className]} id={id}>
+  <div class="container">
+    {
+      (etiqueta || titulo) && (
+        <header class="seccion__head">
+          {etiqueta && <p class="eyebrow">{etiqueta}</p>}
+          {titulo && <h2 class="seccion__titulo">{titulo}</h2>}
+        </header>
+      )
+    }
+    <slot />
+  </div>
+</section>
+
+<style>
+  .seccion {
+    padding-block: var(--space-12);
+  }
+
+  .seccion__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+  }
+
+  .seccion__titulo {
+    font-size: var(--step-2);
+  }
+
+  @media (min-width: 48rem) {
+    .seccion {
+      padding-block: var(--space-16);
+    }
+
+    .seccion__head {
+      margin-bottom: var(--space-12);
+    }
+  }
+</style>

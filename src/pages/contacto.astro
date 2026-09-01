@@ -1,0 +1,131 @@
+---
+import Base from "../layouts/Base.astro";
+import Seccion from "../components/Seccion.astro";
+import { contacto } from "../data/site";
+
+/* Sin formulario a propósito: el sitio es estático y un formulario exigiría un backend
+ * que no aporta nada frente a un enlace directo. */
+const canales = [
+  {
+    titulo: "Correo",
+    valor: contacto.email,
+    href: `mailto:${contacto.email}`,
+    nota: "La vía directa.",
+    externo: false,
+  },
+  {
+    titulo: "LinkedIn",
+    valor: "in/joga-dev",
+    href: contacto.linkedin,
+    nota: "Trayectoria completa y contacto profesional.",
+    externo: true,
+  },
+  {
+    titulo: "GitHub",
+    valor: "JoseGarcia2001",
+    href: contacto.github,
+    nota: "Código de mis proyectos personales.",
+    externo: true,
+  },
+];
+---
+
+<Base
+  titulo="Contacto"
+  descripcion="Correo, LinkedIn y GitHub de Jose Garcia, Engineering Manager."
+>
+  <Seccion titulo="Hablemos" etiqueta="Contacto">
+    <p class="intro measure">
+      Escríbeme si buscas liderazgo de ingeniería, quieres discutir una decisión técnica o
+      simplemente tienes curiosidad por algo que construí.
+    </p>
+
+    <ul class="canales">
+      {
+        canales.map((c) => (
+          <li>
+            <a
+              class="canal"
+              href={c.href}
+              rel={c.externo ? "noopener" : undefined}
+              target={c.externo ? "_blank" : undefined}
+            >
+              <p class="canal__titulo">{c.titulo}</p>
+              <p class="canal__valor">{c.valor}</p>
+              <p class="canal__nota">{c.nota}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Seccion>
+</Base>
+
+<style>
+  .intro {
+    font-size: var(--step-1);
+    color: var(--fg-muted);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-12);
+  }
+
+  .canales {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  /* Tablet: dos columnas y el último canal abarca la fila. */
+  @media (min-width: 40rem) and (max-width: 55.99rem) {
+    .canales {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .canales > li:last-child {
+      grid-column: span 2;
+    }
+  }
+
+  @media (min-width: 56rem) {
+    .canales {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .canal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    height: 100%;
+    padding: var(--space-6);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition), background-color var(--transition);
+  }
+
+  .canal:hover,
+  .canal:focus-visible {
+    background: var(--bg-hover);
+    border-color: var(--accent);
+  }
+
+  .canal__titulo {
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+  }
+
+  .canal__valor {
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    /* Un correo largo no debe desbordar la tarjeta en pantallas de 320px. */
+    overflow-wrap: anywhere;
+  }
+
+  .canal__nota {
+    font-size: var(--step--1);
+    color: var(--fg-muted);
+    margin-top: auto;
+  }
+</style>

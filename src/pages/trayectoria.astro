@@ -1,0 +1,228 @@
+---
+import Base from "../layouts/Base.astro";
+import Seccion from "../components/Seccion.astro";
+import { cita, formacion, intereses, sobreMi, stack, trayectoria } from "../data/perfil";
+---
+
+<Base
+  titulo="Trayectoria"
+  descripcion="De técnico de computadores a Engineering Manager. Ocho años de evolución técnica y de liderazgo, etapa por etapa."
+>
+  <Seccion titulo="De reparar computadores a dirigir equipos" etiqueta="Trayectoria">
+    <p class="intro measure">
+      Cada etapa cambió el tipo de problema que resuelvo. Al principio era una pieza dañada.
+      Después un componente mal escrito. Hoy es un equipo que necesita claridad.
+    </p>
+
+    <blockquote class="cita">
+      <p>{cita}</p>
+      <footer>De mi primer sitio personal, 2021</footer>
+    </blockquote>
+
+    <ol class="linea">
+      {
+        trayectoria.map((e) => (
+          <li class="etapa">
+            <div class="etapa__meta">
+              <p class="etapa__periodo">{e.periodo}</p>
+              <p class="etapa__contexto">{e.contexto}</p>
+            </div>
+            <div class="etapa__cuerpo">
+              <h3 class="etapa__rol">{e.rol}</h3>
+              <p class="etapa__detalle">{e.detalle}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </Seccion>
+
+  <Seccion titulo="Formación" etiqueta="Educación">
+    <ol class="linea">
+      {
+        formacion.map((f) => (
+          <li class="etapa">
+            <div class="etapa__meta">
+              <p class="etapa__periodo">{f.periodo}</p>
+            </div>
+            <div class="etapa__cuerpo">
+              <h3 class="formacion__titulo">{f.titulo}</h3>
+              <p class="formacion__institucion">{f.institucion}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </Seccion>
+
+  <Seccion titulo="Herramientas" etiqueta="Stack">
+    <dl class="stack">
+      {
+        Object.entries(stack).map(([grupo, items]) => (
+          <div class="stack__grupo">
+            <dt class="stack__titulo">{grupo}</dt>
+            <dd class="stack__items">
+              <ul>
+                {items.map((i) => (
+                  <li class="chip">{i}</li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Seccion>
+
+  <Seccion titulo="Fuera del trabajo" etiqueta="Personal">
+    <p class="sobre-mi measure">{sobreMi}</p>
+    <ul class="intereses">
+      {intereses.map((i) => <li class="chip">{i}</li>)}
+    </ul>
+  </Seccion>
+</Base>
+
+<style>
+  .intro {
+    font-size: var(--step-1);
+    color: var(--fg-muted);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-12);
+  }
+
+  .linea {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .etapa {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-8);
+    border-top: 1px solid var(--border);
+  }
+
+  .etapa:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .etapa__periodo {
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+
+  .etapa__contexto {
+    font-size: var(--step--1);
+    color: var(--fg-subtle);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: var(--space-2);
+  }
+
+  .etapa__rol {
+    font-size: var(--step-1);
+    margin-bottom: var(--space-3);
+  }
+
+  .etapa__detalle {
+    color: var(--fg-muted);
+    max-width: var(--measure);
+  }
+
+  .cita {
+    max-width: var(--measure);
+    margin-bottom: var(--space-12);
+    padding-left: var(--space-6);
+    border-left: 2px solid var(--accent);
+  }
+
+  /* Monument en siete líneas no se lee: la cita va en la fuente de cuerpo.
+   * La barra de acento a la izquierda ya la distingue del resto. */
+  .cita p {
+    font-size: var(--step-1);
+    line-height: var(--leading-snug);
+  }
+
+  .cita footer {
+    margin-top: var(--space-4);
+    font-size: var(--step--1);
+    color: var(--fg-subtle);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .formacion__titulo {
+    font-size: var(--step-0);
+    margin-bottom: var(--space-2);
+  }
+
+  .formacion__institucion {
+    font-size: var(--step--1);
+    color: var(--fg-muted);
+  }
+
+  /* --- Stack --- */
+  .stack {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stack__grupo {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--border);
+  }
+
+  .stack__grupo:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stack__titulo {
+    font-family: var(--font-display);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .stack__items ul,
+  .intereses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .chip {
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+    color: var(--fg);
+  }
+
+  @media (min-width: 48rem) {
+    .stack__grupo {
+      grid-template-columns: 14rem 1fr;
+      gap: var(--space-8);
+      align-items: baseline;
+    }
+  }
+
+  /* --- Personal --- */
+  .sobre-mi {
+    font-size: var(--step-1);
+    color: var(--fg-muted);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-8);
+  }
+
+  @media (min-width: 48rem) {
+    .etapa {
+      grid-template-columns: 14rem 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>

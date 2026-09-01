@@ -1,0 +1,136 @@
+---
+import Base from "../layouts/Base.astro";
+import Seccion from "../components/Seccion.astro";
+import Flecha from "../components/Flecha.astro";
+import { proyectos } from "../data/perfil";
+---
+
+<Base
+  titulo="Proyectos"
+  descripcion="Proyectos propios: un catálogo abierto de skills para agentes, un monorepo personal y la infraestructura que los hospeda."
+>
+  <Seccion titulo="Lo que construyo por fuera del trabajo" etiqueta="Proyectos">
+    <p class="intro measure">
+      Todo lo de aquí es mío y está publicado. Sirve para dos cosas: resolver un problema real
+      que tengo y probar decisiones técnicas antes de proponerlas en un equipo.
+    </p>
+
+    <ul class="rejilla">
+      {
+        proyectos.map((p) => (
+          <li class="proyecto">
+            <div class="proyecto__head">
+              <p class="proyecto__estado">{p.estado}</p>
+              <h3 class="proyecto__nombre">{p.nombre}</h3>
+            </div>
+            <p class="proyecto__descripcion">{p.descripcion}</p>
+            <ul class="stack">
+              {p.stack.map((t) => (
+                <li class="stack__item">{t}</li>
+              ))}
+            </ul>
+            {p.href && (
+              <a class="link proyecto__enlace" href={p.href} rel="noopener" target="_blank">
+                Ver código <Flecha />
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </Seccion>
+</Base>
+
+<style>
+  .intro {
+    font-size: var(--step-1);
+    color: var(--fg-muted);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-12);
+  }
+
+  .rejilla {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  /* Tablet: dos columnas y la última tarjeta abarca la fila, para no dejar
+   * una fila a medias. Misma regla que en las capacidades de la portada. */
+  @media (min-width: 40rem) and (max-width: 61.99rem) {
+    .rejilla {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rejilla > li:last-child {
+      grid-column: span 2;
+    }
+  }
+
+  @media (min-width: 62rem) {
+    .rejilla {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .proyecto {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition);
+  }
+
+  .proyecto:hover {
+    border-color: var(--border-strong);
+  }
+
+  .proyecto__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .proyecto__nombre {
+    font-size: var(--step-1);
+  }
+
+  .proyecto__estado {
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .proyecto__descripcion {
+    font-size: var(--step--1);
+    color: var(--fg-muted);
+    flex-grow: 1;
+    max-width: 52ch;
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .stack__item {
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+    color: var(--fg-subtle);
+  }
+
+  .proyecto__enlace {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--tap);
+    align-self: flex-start;
+    font-size: var(--step--1);
+  }
+</style>
