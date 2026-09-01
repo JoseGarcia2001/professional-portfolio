@@ -178,3 +178,58 @@ export const proyectos: Proyecto[] = [
     estado: "En operación",
   },
 ];
+
+export interface PiezaDeArchivo {
+  nombre: string;
+  anio: string;
+  descripcion: string;
+  stack: string[];
+  /** Copia en vivo. Se omite cuando la pieza solo sobrevive como código. */
+  demo?: string;
+  repo: string;
+}
+
+/* Trabajo de 2021, el año en que aprendí a programar. Vivía en Netlify; se
+ * movió a un Worker propio para que no dependa de una cuenta de terceros.
+ *
+ * El código quedó como estaba: solo se actualizó el empaquetador, porque el de
+ * 2021 ya no corre con Node actual y sin eso las piezas dejarían de poder
+ * reconstruirse. */
+export const archivo: PiezaDeArchivo[] = [
+  {
+    nombre: "Kuepa",
+    anio: "2021",
+    descripcion:
+      "Aula virtual con chat en vivo. Fue mi primer proyecto con websockets: la clase y la conversación tenían que ir sincronizadas para varios estudiantes a la vez.",
+    stack: ["React", "Vite", "Socket.IO", "wouter"],
+    demo: "https://kuepa.jogadev.com",
+    repo: "https://github.com/JoseGarcia2001/kuepa-frontend",
+  },
+  {
+    nombre: "OneGroup",
+    anio: "2021",
+    descripcion:
+      "Prueba técnica: un panel para administrar usuarios. La resolví con Redux porque quería entender por qué un estado global se vuelve necesario, no porque el tamaño lo pidiera.",
+    stack: ["React", "Redux", "Vite"],
+    demo: "https://onegroup.jogadev.com",
+    repo: "https://github.com/JoseGarcia2001/onegroup_prueba_tecnica",
+  },
+  {
+    nombre: "OneGroup en Vue",
+    anio: "2021",
+    descripcion:
+      "La misma aplicación, reescrita en Vue con Vuex. Traducir un proyecto que ya conocía fue la forma más rápida de ver en qué se parecen los dos frameworks y en qué no.",
+    stack: ["Vue 3", "Vuex", "Vue Router", "Vite"],
+    demo: "https://onegroup-vue.jogadev.com",
+    repo: "https://github.com/JoseGarcia2001/onegroup-app-vue",
+  },
+  {
+    nombre: "Pizzapp",
+    anio: "2021",
+    descripcion:
+      "Pedidos de pizza con dos roles: el cliente arma su pedido y la cocina lo despacha. El primer proyecto donde el modelo de datos importó más que la interfaz.",
+    stack: ["React", "Redux", "React Router"],
+    demo: "https://pizzapp.jogadev.com",
+    repo: "https://github.com/JoseGarcia2001/Pizzap",
+  },
+];
