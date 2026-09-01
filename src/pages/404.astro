@@ -4,8 +4,11 @@ import Seccion from "../components/Seccion.astro";
 import { nav } from "../data/site";
 ---
 
-<Base titulo="Página no encontrada">
-  <Seccion titulo="Esta página no existe" etiqueta="Error 404">
+<Base
+  titulo="Página no encontrada"
+  descripcion="La página que buscas no existe o cambió de dirección. Estas son las secciones del sitio."
+>
+  <Seccion titulo="Esta página no existe" etiqueta="Error 404" como="h1">
     <p class="texto measure">
       El enlace está roto o la página cambió de dirección. Estas sí funcionan:
     </p>
