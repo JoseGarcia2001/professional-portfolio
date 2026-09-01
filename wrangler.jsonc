@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jogadev-site",
+  "compatibility_date": "2026-08-31",
+  // Worker de solo assets: sirve dist/ desde el edge, sin codigo propio.
+  // Cloudflare recomienda Workers para proyectos nuevos, tambien los estaticos:
+  // Pages sigue soportado, pero toda la inversion futura va a Workers.
+  // https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/
+  "assets": {
+    "directory": "./dist",
+    // Astro genera un .html por ruta (build.format: "file"), asi que
+    // /trayectoria se sirve desde trayectoria.html sin redireccion.
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

@@ -1,0 +1,30 @@
+# Cabeceras por ruta. Workers Static Assets lo lee igual que Pages.
+
+# Assets con hash en el nombre: el nombre cambia si cambia el contenido,
+# asi que se pueden cachear indefinidamente.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Las fuentes no llevan hash. Si alguna se sustituye hay que renombrar el
+# archivo, no bajar este max-age.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Iconos e imagen social: cambian poco, pero sin hash.
+/favicon.svg
+  Cache-Control: public, max-age=604800
+/favicon-32.png
+  Cache-Control: public, max-age=604800
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+/og.png
+  Cache-Control: public, max-age=604800
+
+# Cabeceras de seguridad para todo el sitio.
+# HSTS sin includeSubDomains a proposito: los subdominios sirven otros
+# servicios por el tunel y no deben quedar atados a esta politica.
+/*
+  Strict-Transport-Security: max-age=15552000
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
