@@ -5,6 +5,12 @@
     "**/*"
   ],
   "exclude": [
-    "dist"
-  ]
+    "dist",
+    "archive"
+  ],
+  "compilerOptions": {
+    "types": [
+      "@cloudflare/workers-types"
+    ]
+  }
 }
